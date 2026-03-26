@@ -6,6 +6,7 @@
 /////
 
 // These are out of 127
+const int MAX_DRIVE_SPEED = 127;
 const int DRIVE_SPEED = 110;
 const int TURN_SPEED = 90;
 const int SWING_SPEED = 110;
@@ -51,20 +52,35 @@ void default_constants() {
 ///
 // Drive Example
 ///
-void drive_example() {
+void auton_test() {
   // The first parameter is target inches
   // The second parameter is max speed the robot will drive at
   // The third parameter is a boolean (true or false) for enabling/disabling a slew at the start of drive motions
   // for slew, only enable it when the drive distance is greater than the slew distance + a few inches
 
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  pros::delay(250);
+
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  pros::delay(250);
+
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  pros::delay(250);
+
+  chassis.pid_turn_set(90_deg, TURN_SPEED);
+  chassis.pid_wait();
+  pros::delay(250);
+
   chassis.pid_drive_set(24_in, DRIVE_SPEED, true);
   chassis.pid_wait();
+  pros::delay(250);
 
-  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
+  chassis.pid_drive_set(-24_in, DRIVE_SPEED);
   chassis.pid_wait();
-
-  chassis.pid_drive_set(-12_in, DRIVE_SPEED);
-  chassis.pid_wait();
+  pros::delay(250);
 }
 
 ///
